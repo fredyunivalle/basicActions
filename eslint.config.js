@@ -2,7 +2,6 @@ const { defineConfig } = require('eslint/config');
 
 module.exports = defineConfig([
   {
-    root: true,
     files: ['src/**/*.js'],
     ignores: ['**/tests/**', '**/*.test.js'],
     languageOptions: {
