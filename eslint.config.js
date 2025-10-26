@@ -19,7 +19,7 @@ module.exports = defineConfig([
       curly: ['error', 'all'],
       'no-console': 'warn',
 
-      complexity: ['warn', { max: 5 }],
+      complexity: ['error', { max: 10 }],
     },
   },
 ]);
