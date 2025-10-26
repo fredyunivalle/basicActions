@@ -1,6 +1,6 @@
 const { calculator, isValidPassword, factorial, findDuplicates } = require('../src/level3');
 
-describe('Level 3 – Logic and Conditions', () => {
+describe('Level 3 – Algorithms and Metrics', () => {
   // -----------------------------
   test('calculator: should perform basic arithmetic operations', () => {
     expect(calculator('+ 3 5')).toBe(8);

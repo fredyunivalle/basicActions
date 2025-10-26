@@ -1,28 +1,27 @@
-
 function calculator(expression) {
-  const parts = expression.trim().split(" ");
-
+  const parts = expression.trim().split(' ');
   const operator = parts[0];
   const a = Number(parts[1]);
   const b = Number(parts[2]);
 
   if (isNaN(a) || isNaN(b)) {
-    throw new Error("Invalid operands");
+    throw new Error('Invalid operands');
   }
 
-  switch (operator) {
-    case '+':
-      return a + b;
-    case '-':
-      return a - b;
-    case '*':
-      return a * b;
-    case '/':
-      if (b === 0) throw new Error("Division by zero");
-      return a / b;
-    default:
-      throw new Error("Invalid operator");
-  }
+  const operations = {
+    '+': (x, y) => x + y,
+    '-': (x, y) => x - y,
+    '*': (x, y) => x * y,
+    '/': (x, y) => {
+      if (y === 0) throw new Error('Division by zero');
+      return x / y;
+    },
+  };
+
+  const operation = operations[operator];
+  if (!operation) throw new Error('Invalid operator');
+
+  return operation(a, b);
 }
 
 function isValidPassword(text) {
@@ -40,7 +39,7 @@ function factorial(n) {
 }
 
 function findDuplicates(text) {
-  const words = text.split(" ");
+  const words = text.split(' ');
   const seen = [];
   const duplicates = [];
 

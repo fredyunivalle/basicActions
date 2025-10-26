@@ -6,38 +6,26 @@ function textToTitleCase(text) {
     .join(' ');
 }
 
-
 function fizzBuzz(n) {
   const output = [];
-  let i = 1;
 
-  while (i <= n) {
-    const divBy3 = i % 3 === 0;
-    const divBy5 = i % 5 === 0;
+  for (let i = 1; i <= n; i++) {
+    let result = '';
 
-    if (divBy3 && divBy5) {
-      output.push("FizzBuzz");
-    } else if (divBy3) {
-      output.push("Fizz");
-    } else if (divBy5) {
-      output.push("Buzz");
-    } else {
-      output.push(i.toString());
-    }
+    if (i % 3 === 0) result += 'Fizz';
+    if (i % 5 === 0) result += 'Buzz';
 
-    i++;
+    output.push(result || i.toString());
   }
 
   return output;
 }
 
-
 function isIsogram(word) {
-  str = word.toLowerCase();
+  const str = word.toLowerCase();
   let len = str.length;
-  let arr = str.split("");
+  let arr = str.split('').sort();
 
-  arr.sort();
   for (let i = 0; i < len - 1; i++) {
     if (arr[i] == arr[i + 1])
       return false;
@@ -47,7 +35,7 @@ function isIsogram(word) {
 }
 
 function uniqueWordFinder(text) {
-  const arr = text.split(" ");
+  const arr = text.split(' ');
   const uniqueWords = [];
 
   for (const word of arr) {

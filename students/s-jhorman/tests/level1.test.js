@@ -19,4 +19,3 @@ describe('Level 1 – Basic Functions', () => {
     expect(() => countVowels(42)).toThrow('Input must be a string');
   });
 });
-
