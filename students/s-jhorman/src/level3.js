@@ -40,16 +40,16 @@ function factorial(n) {
 
 function findDuplicates(text) {
   const words = text.split(' ');
-  const seen = [];
-  const duplicates = [];
+  const wordCounts = new Map();
 
   for (const word of words) {
-    if (seen.includes(word)) {
-      if (!duplicates.includes(word)) {
-        duplicates.push(word);
-      }
-    } else {
-      seen.push(word);
+    wordCounts.set(word, (wordCounts.get(word) || 0) + 1);
+  }
+
+  const duplicates = [];
+  for (const [word, count] of wordCounts.entries()) {
+    if (count > 1) {
+      duplicates.push(word);
     }
   }
 
