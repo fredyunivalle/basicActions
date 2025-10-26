@@ -2,7 +2,7 @@ const { defineConfig } = require('eslint/config');
 
 module.exports = defineConfig([
   {
-    files: ['src/**/*.js'],
+    files: ['**/*.js'],
     ignores: ['**/tests/**', '**/*.test.js'],
     languageOptions: {
       ecmaVersion: 2021,
@@ -11,14 +11,11 @@ module.exports = defineConfig([
     rules: {
       semi: ['error', 'always'],
       quotes: ['error', 'single'],
-      'no-unused-vars': 'warn',
+      'no-unused-vars': 'error',
       'no-undef': 'error',
-
       'prefer-const': 'warn',
       eqeqeq: ['error', 'always'],
       curly: ['error', 'all'],
-      'no-console': 'warn',
-
       complexity: ['error', { max: 10 }],
     },
   },
