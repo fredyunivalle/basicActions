@@ -29,7 +29,7 @@ jobs:
         run: npm run lint
 
       - name:  Check Cyclomatic Complexity (Strict)
-        run: npm run complexity:check
+        run: npm run complexity
 
       - name:  Run tests with coverage
         run: npm run test:ci
