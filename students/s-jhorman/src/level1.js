@@ -20,4 +20,3 @@ function countVowels(text) {
 
 // Export so Jest can use them
 module.exports = { isPalindrome, sumArray, countVowels };
-
