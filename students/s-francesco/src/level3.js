@@ -16,28 +16,30 @@ function caesarCipher(text, shift) {
 
 // --- Function 2 ---
 function knapsackProblem(weights, values, capacity) {
-  if (!Array.isArray(weights) || !Array.isArray(values))
-    throw new Error('Weights and values must be arrays');
-  if (typeof capacity !== 'number')
-    throw new Error('Capacity must be a number');
+  const validate = () => {
+    if (!Array.isArray(weights) || !Array.isArray(values))
+      throw new Error('Weights and values must be arrays');
+    if (typeof capacity !== 'number')
+      throw new Error('Capacity must be a number');
+  };
 
-  const n = weights.length;
-  const dp = Array.from({ length: n + 1 }, () =>
-    Array(capacity + 1).fill(0)
-  );
+  const createDP = () =>
+    Array.from({ length: weights.length + 1 }, () =>
+      Array(capacity + 1).fill(0)
+    );
 
-  for (let i = 1; i <= n; i++) {
+  validate();
+  const dp = createDP();
+
+  for (let i = 1; i <= weights.length; i++) {
     const weight = weights[i - 1];
     const value = values[i - 1];
-
     for (let w = 0; w <= capacity; w++) {
       const includeValue = weight <= w ? value + dp[i - 1][w - weight] : 0;
-      const excludeValue = dp[i - 1][w];
-      dp[i][w] = Math.max(includeValue, excludeValue);
+      dp[i][w] = Math.max(includeValue, dp[i - 1][w]);
     }
   }
-
-  return dp[n][capacity];
+  return dp[weights.length][capacity];
 }
 
 // --- Function 3 ---
